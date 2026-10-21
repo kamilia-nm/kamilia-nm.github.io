@@ -1,125 +1,348 @@
+
+/* =========================
+   1. Variables et reset
+========================= */
+
+:root {
+    --primary: #462C7D;
+    --secondary: #831C91;
+    --accent: #D552A3;
+    --light-accent: #FF70BF;
+    --background: #F7F5FB;
+    --white: #FFFFFF;
+    --text: #29243A;
+    --muted: #716B80;
+    --border: #E8E1F0;
+    --shadow: 0 8px 25px rgba(70, 44, 125, 0.08);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 40px;
-    
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 40px 20px;
 }
+
+/* =========================
+   2. Header
+========================= */
 
 header {
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto 28px;
+    padding: 45px 40px;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color: var(--white);
+    border-radius: 18px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
 }
 
-h1 {
-    margin: 0;
-    font-size: 2em;
-    
+header::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border: 35px solid rgba(255, 112, 191, 0.15);
+    border-radius: 50%;
+    right: -65px;
+    top: -85px;
 }
 
-p {
-    margin: 0;
-    font-size: 1.2em;
+.header-content {
+    position: relative;
+    z-index: 1;
 }
+
+header h1 {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 750;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+header p {
+    font-size: 16px;
+    color: #F5EAFB;
+    max-width: 650px;
+}
+
+/* =========================
+   3. Sections générales
+========================= */
 
 section {
-    margin-bottom: 20px;
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    padding: 30px 35px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
 }
 
-h2 {
-    font-size: 1.5em;
+section h2 {
+    color: var(--primary);
+    font-size: 23px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--border);
+    position: relative;
+}
+
+section h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 65px;
+    height: 3px;
+    background: var(--accent);
+    border-radius: 5px;
+}
+
+section h3 {
+    color: var(--secondary);
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+section p {
+    margin-bottom: 8px;
+}
+
+strong {
+    color: var(--primary);
+}
+
+/* =========================
+   4. Education et expérience
+========================= */
+
+.education article,
+.experience article {
+    padding: 20px 0 20px 20px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+}
+
+.education article:last-child,
+.experience article:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    flex-wrap: wrap;
     margin-bottom: 10px;
-    
 }
 
-article {
-    margin-bottom: 15px;
+.container h3 {
+    flex: 1;
 }
 
-h3 {
-    font-size: 1.2em;
+.date {
+    color: var(--secondary);
+    font-size: 14px;
+    font-weight: 600;
+    background: #F7ECF8;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
 }
 
-ul {
-    list-style: disc;
-    margin-left: 20px;
+/* =========================
+   5. Technical skills
+========================= */
+
+.skills h3 {
+    margin-top: 22px;
+    margin-bottom: 10px;
+    padding-left: 12px;
+    border-left: 3px solid var(--accent);
 }
 
-address {
+.skills h3:first-of-type {
+    margin-top: 0;
+}
+
+.skills ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+.skills li {
+    padding: 7px 14px;
+    background: #F3EFFA;
+    border: 1px solid #E8DDF4;
+    border-radius: 8px;
+    color: var(--primary);
+    font-size: 14px;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.skills li:hover {
+    background: #FCEAF5;
+    transform: translateY(-2px);
+}
+
+/* =========================
+   6. Languages
+========================= */
+
+.languages ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.languages li {
+    padding: 8px 18px;
+    background: #F7ECF8;
+    color: var(--secondary);
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+/* =========================
+   7. Participation
+========================= */
+
+.participations .container {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.participations .container:last-child {
+    border-bottom: none;
+}
+
+.participations h4 {
+    color: var(--text);
+    font-size: 16px;
+}
+
+/* =========================
+   8. Contact
+========================= */
+
+.contact address {
     font-style: normal;
 }
-.profile-photo {
-    width: 150px; 
-    height: 200px; 
-    border: 2px solid #333; 
-    border-radius: 50%; 
-    display: inline-block;
-    margin-right: 20px; 
+
+.contact p {
+    overflow-wrap: anywhere;
+    margin-bottom: 12px;
 }
 
-.skills table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+.contact a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
 }
 
-.skills tr {
-    border-bottom: 1px solid #ccc;
-    
+.contact a:hover {
+    color: var(--accent);
+    text-decoration: underline;
 }
 
-.skill{
-    padding: 10px;
-    text-align: left;
-    width: 30%; 
+/* =========================
+   9. Responsive design
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 18px 10px;
+    }
+
+    header {
+        padding: 32px 24px;
+        border-radius: 14px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    section {
+        padding: 24px 20px;
+        border-radius: 12px;
+    }
+
+    section h2 {
+        font-size: 21px;
+    }
+
+    .container {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .date {
+        align-self: flex-start;
+    }
+
+    .skills li {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
 }
 
-.bar {
-    border-color: #333;
-    height: 15px;
-    border-radius: 15%;
-    padding: 5px;
-    text-align: left;
-    
-    
-}
+/* =========================
+   10. Impression / PDF
+========================= */
 
-.fill {
-    background-color: #333; 
-    height: 30%;
-    border-radius: 5px;
-    border-collapse: collapse;
-    
-}
-.fill  p {
-    text-align: left;
-    margin-left: 105%;
-    font-size: 15px;
+@media print {
+    body {
+        background: white;
+        padding: 0;
+        font-size: 11pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
 
-}
-.date {
-    font-size: 15px;
-    opacity: 60%;
-    margin-left: 1%;
-   
-   
+    header,
+    section {
+        box-shadow: none;
+        break-inside: avoid;
+    }
 
-}
-.container {
-    display: flex; /* Utilise Flexbox pour placer les éléments côte à côte */
-    align-items: center; 
-}
+    header {
+        margin-bottom: 15px;
+    }
 
-.linkedin {
+    section {
+        margin-bottom: 15px;
+        padding: 20px;
+    }
 
-    color: #333333;
+    a {
+        text-decoration: none;
+    }
 }
-
